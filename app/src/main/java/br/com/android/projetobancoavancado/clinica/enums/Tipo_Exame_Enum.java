@@ -1,4 +1,4 @@
-package br.com.android.projetobancoavancado.model;
+package br.com.android.projetobancoavancado.clinica.enums;
 
 public enum Tipo_Exame_Enum {
     ADMISSIONAL("Admissional"), PERIODICO("Periodico"), RETORNO_AO_TRABALHO("Retorno ao trabalho"),

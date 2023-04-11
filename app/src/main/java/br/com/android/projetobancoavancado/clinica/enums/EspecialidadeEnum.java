@@ -1,4 +1,4 @@
-package br.com.android.projetobancoavancado.model;
+package br.com.android.projetobancoavancado.clinica.enums;
 
 public enum EspecialidadeEnum {
 

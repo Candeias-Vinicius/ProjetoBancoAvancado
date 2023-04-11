@@ -1,16 +1,24 @@
-package br.com.android.projetobancoavancado.model;
+package br.com.android.projetobancoavancado.clinica.model;
 
 import java.util.Objects;
 
 public class Paciente {
 
     private Integer id;
-    private Integer cpf;
+    private String cpf;
     private String nome;
     private Empresa empresa;
     private Cargo cargo;
 
-    public Paciente(Integer cpf, String nome, Empresa empresa, Cargo cargo) {
+    public Paciente(Integer id, String cpf, String nome, Empresa empresa, Cargo cargo) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.empresa = empresa;
+        this.cargo = cargo;
+    }
+
+    public Paciente(String cpf, String nome, Empresa empresa, Cargo cargo) {
 
         this.cpf = cpf;
         this.nome = nome;
@@ -18,11 +26,19 @@ public class Paciente {
         this.cargo = cargo;
     }
 
-    public Integer getCpf() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -48,14 +64,6 @@ public class Paciente {
 
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     @Override

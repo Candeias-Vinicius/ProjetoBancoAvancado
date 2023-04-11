@@ -1,16 +1,26 @@
-package br.com.android.projetobancoavancado.model;
+package br.com.android.projetobancoavancado.clinica.model;
 
 import java.util.Objects;
+
+import br.com.android.projetobancoavancado.clinica.enums.EspecialidadeEnum;
 
 public class Medico {
 
     private Integer id;
-    private Integer crm;
+    private String crm;
     private String nome;
     private String email;
     private EspecialidadeEnum especialidadeEnum;
 
-    public Medico(Integer crm, String nome, String email, EspecialidadeEnum especialidadeEnum) {
+    public Medico(Integer id, String crm, String nome, String email, EspecialidadeEnum especialidadeEnum) {
+        this.id = id;
+        this.crm = crm;
+        this.nome = nome;
+        this.email = email;
+        this.especialidadeEnum = especialidadeEnum;
+    }
+
+    public Medico(String crm, String nome, String email, EspecialidadeEnum especialidadeEnum) {
         this.crm = crm;
         this.nome = nome;
         this.email = email;
@@ -21,11 +31,11 @@ public class Medico {
         return id;
     }
 
-    public Integer getCrm() {
+    public String getCrm() {
         return crm;
     }
 
-    public void setCrm(Integer crm) {
+    public void setCrm(String crm) {
         this.crm = crm;
     }
 

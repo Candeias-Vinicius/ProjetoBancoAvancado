@@ -1,4 +1,6 @@
-package br.com.android.projetobancoavancado.model;
+package br.com.android.projetobancoavancado.clinica.model;
+
+import br.com.android.projetobancoavancado.clinica.enums.RiscoOcupacionaEnum;
 
 public class Atestado {
 

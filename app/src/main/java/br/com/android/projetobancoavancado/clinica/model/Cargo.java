@@ -1,15 +1,19 @@
-package br.com.android.projetobancoavancado.model;
+package br.com.android.projetobancoavancado.clinica.model;
 
 import java.util.Objects;
 
 public class Cargo {
 
     private Integer id;
-    private String descricao;
+    private String nome;
 
-    public Cargo(Integer id, String descricao) {
+    public Cargo(Integer id, String nome) {
         this.id = id;
-        this.descricao = descricao;
+        this.nome = nome;
+    }
+
+    public Cargo(String nome) {
+        this.nome = nome;
     }
 
     public Integer getId() {
@@ -20,25 +24,24 @@ public class Cargo {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cargo cargo = (Cargo) o;
-        return Objects.equals(id, cargo.id) && Objects.equals(descricao, cargo.descricao);
+        return Objects.equals(id, cargo.id) && Objects.equals(nome, cargo.nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, descricao);
+        return Objects.hash(id, nome);
     }
 }

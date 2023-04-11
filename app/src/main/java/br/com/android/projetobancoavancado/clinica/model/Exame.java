@@ -1,7 +1,9 @@
-package br.com.android.projetobancoavancado.model;
+package br.com.android.projetobancoavancado.clinica.model;
 
 import java.util.Date;
 import java.util.Objects;
+
+import br.com.android.projetobancoavancado.clinica.enums.Tipo_Exame_Enum;
 
 public class Exame {
 
@@ -12,7 +14,7 @@ public class Exame {
     private Tipo_Exame_Enum tipo_exame;
     private Date data;
 
-    public Exame(Integer id, Medico medico, Paciente paciente, String resultado, Tipo_Exame_Enum tipo_exame, Date data) {
+    public Exame(Medico medico, Paciente paciente, String resultado, Tipo_Exame_Enum tipo_exame, Date data) {
         this.id = id;
         this.medico = medico;
         this.paciente = paciente;
