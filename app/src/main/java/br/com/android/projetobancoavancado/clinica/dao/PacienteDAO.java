@@ -54,12 +54,13 @@ public class PacienteDAO {
             int id = cursor.getInt(0);
             String cpf = cursor.getString(1);
             String nome = cursor.getString(2);
-            int empresaId = cursor.getInt(3);
-            String cnpj = cursor.getString(4);
-            String empresaNome = cursor.getString(5);
-            String segmentoStr = cursor.getString(6);
-            int cargoId = cursor.getInt(7);
-            String cargoNome = cursor.getString(8);
+            int cargoId = cursor.getInt(3);
+            String cargoNome = cursor.getString(4);
+            int empresaId = cursor.getInt(5);
+            String cnpj = cursor.getString(6);
+            String empresaNome = cursor.getString(7);
+            String segmentoStr = cursor.getString(8);
+
 
             SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
 
@@ -73,8 +74,45 @@ public class PacienteDAO {
         return pacientes;
     }
 
-    public void deletar(Paciente paciente){
+    public Paciente buscarPorId(Integer id) {
 
-        dataBase.delete("Paciente", "id = ?", new String[] { String.valueOf(paciente.getId()) });
+        Paciente paciente = new Paciente(null, null, null, null, null);
+
+        String sql = "SELECT p.id, p.cpf, p.nome, c.id AS cargo_id, c.nome AS cargo_nome, " +
+                "e.id AS empresa_id, e.cnpj, e.nome AS empresa_nome, e.segmento " +
+                "FROM Paciente p " +
+                "JOIN Cargo c ON p.cargo_id = c.id " +
+                "JOIN Empresa e ON p.empresa_id = e.id " +
+                "WHERE p.id = ?";
+
+
+        Cursor cursor = dataBase.rawQuery(sql, new String[]{String.valueOf(id)});
+
+        while (cursor.moveToNext()) {
+
+            int pacienteId = cursor.getInt(0);
+            String cpf = cursor.getString(1);
+            String nome = cursor.getString(2);
+            int cargoId = cursor.getInt(3);
+            String cargoNome = cursor.getString(4);
+            int empresaId = cursor.getInt(5);
+            String cnpj = cursor.getString(6);
+            String empresaNome = cursor.getString(7);
+            String segmentoStr = cursor.getString(8);
+
+
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
+
+            Cargo cargo = new Cargo(cargoId, cargoNome);
+            Empresa empresa = new Empresa(empresaId, cnpj, empresaNome, segmento);
+            paciente = new Paciente(pacienteId, cpf, nome, empresa, cargo);
+
+
+        }
+        return paciente;
+    }
+    public void deletar(Integer id){
+
+        dataBase.delete("Paciente", "id = ?", new String[] { String.valueOf(id) });
     }
 }

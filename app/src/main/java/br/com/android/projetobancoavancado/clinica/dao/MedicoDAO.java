@@ -60,8 +60,30 @@ public class MedicoDAO {
         }
     }
 
-    public void deletar(Medico medico){
+    public Medico buscarPorId(Integer id) {
 
-        dataBase.delete("medico", "id = ?", new String[] { String.valueOf(medico.getId()) });
+        Medico medico = new Medico(null, null, null, null, null);
+
+        String sql = "SELECT * FROM Medico WHERE id = ?";
+
+        Cursor cursor = dataBase.rawQuery(sql, new String[]{String.valueOf(id)});
+
+        while (cursor.moveToNext()) {
+
+            int medicoId = cursor.getInt(0);
+            String crm = cursor.getString(1);
+            String nome = cursor.getString(2);
+            String email = cursor.getString(3);
+            String especialidadeStr = cursor.getString(4);
+
+            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr);
+
+            medico = new Medico(medicoId, crm, nome, email, especialidade);
+        }
+        return medico;
+    }
+    public void deletar(Integer id){
+
+        dataBase.delete("medico", "id = ?", new String[] { String.valueOf(id) });
     }
 }
