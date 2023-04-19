@@ -84,6 +84,6 @@ public class MedicoDAO {
     }
     public void deletar(Integer id){
 
-        dataBase.delete("medico", "id = ?", new String[] { String.valueOf(id) });
+        dataBase.delete("Medico", "id = ?", new String[] { String.valueOf(id) });
     }
 }

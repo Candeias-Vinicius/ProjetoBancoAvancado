@@ -5,11 +5,21 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import br.com.android.projetobancoavancado.clinica.enums.EspecialidadeEnum;
+import br.com.android.projetobancoavancado.clinica.enums.SegmentoEnum;
 import br.com.android.projetobancoavancado.clinica.enums.TipoExameEnum;
+import br.com.android.projetobancoavancado.clinica.model.Cargo;
+import br.com.android.projetobancoavancado.clinica.model.Empresa;
 import br.com.android.projetobancoavancado.clinica.model.Exame;
+import br.com.android.projetobancoavancado.clinica.model.Medico;
+import br.com.android.projetobancoavancado.clinica.model.Paciente;
 import br.com.android.projetobancoavancado.clinica.util.DBHelper;
 
 public class ExameDAO {
@@ -36,21 +46,123 @@ public class ExameDAO {
 
     }
 
-    public List<Exame> buscarExames(){
+    public List<Exame> buscarExames() throws ParseException {
 
         List<Exame> exames = new ArrayList<Exame>();
 
-        String sql = "SELECT e.id, m.id AS medico_id, m.crm, m.nome AS medico_nome, " +
-                "p.id AS paciente_id, p.cpf, p.nome AS paciente_nome, " +
-                "e.tipo, e.data " +
-                "FROM Exame e " +
-                "JOIN Medico m ON e.medico_id = m.id " +
-                "JOIN Paciente p ON e.paciente_id = p.id";
+        String sql = "SELECT e.id, e.nome, e.tipo, e.resultado, e.data, "+
+                "p.id AS paciente_id, p.cpf, p.nome AS paciente_nome, "+
+                "m.id AS medico_id, m.cnpj, m.nome AS medico_nome, m.email AS medico_email, m.especialidade AS medico_especialidade, "+
+                "c.id AS cargo_id, c.nome AS cargo_nome, "+
+                "em.id AS empresa_id, em.cnpj, em.nome AS empresa_nome, em.segmento "+
+                "FROM Exame e "+
+                "JOIN Paciente p ON e.paciente_id = p.id "+
+                "JOIN Medico m ON e.medico_id = m.id "+
+                "JOIN Cargo c ON p.cargo_id = c.id "+
+                "JOIN Empresa em ON p.empresa_id = em.id ";
 
         Cursor cursor = dataBase.rawQuery(sql, null);
 
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String nome = cursor.getString(1);
+            String tipoExameStr = cursor.getString(2);
+            String resultado = cursor.getString(3);
+            String dataStr = cursor.getString(4);
+
+            int pacienteId = cursor.getInt(5);
+            String pacienteCpf = cursor.getString(6);
+            String pacienteNome = cursor.getString(7);
+
+            int medicoId = cursor.getInt(8);
+            String medicoCnpj = cursor.getString(9);
+            String medicoNome = cursor.getString(10);
+            String medicoEmail = cursor.getString(11);
+            String especialidadeStr = cursor.getString(12);
+
+            int cargoId = cursor.getInt(7);
+            String cargoNome = cursor.getString(8);
+
+            int empresaId = cursor.getInt(9);
+            String empresaCnpj = cursor.getString(10);
+            String empresaNome = cursor.getString(11);
+            String segmentoStr = cursor.getString(12);
+
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
+            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr);
+            TipoExameEnum tipoExame = TipoExameEnum.valueOf(tipoExameStr);
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            Date data = format.parse(dataStr);
+
+            Cargo cargo = new Cargo(cargoId, cargoNome);
+            Empresa empresa = new Empresa(empresaId, empresaCnpj, empresaNome, segmento);
+            Paciente paciente = new Paciente(pacienteId, pacienteCpf, pacienteNome, empresa, cargo);
+            Medico medico = new Medico(medicoId, medicoCnpj,medicoNome,medicoEmail,especialidade);
+            Exame exame = new Exame(id, medico, paciente, resultado,tipoExame,data);
+            exames.add(exame);
+        }
 
         return exames;
     }
 
+    public Exame buscarPorId(Integer id) throws ParseException {
+        Exame exame = new Exame(null, null,null,null,null, null);
+
+        String sql = "SELECT e.id, e.tipo, e.resultado, e.data, "+
+                "p.id AS paciente_id, p.cpf, p.nome AS paciente_nome, "+
+                "m.id AS medico_id, m.cnpj, m.nome AS medico_nome, m.email AS medico_email, m.especialidade AS medico_especialidade, "+
+                "c.id AS cargo_id, c.nome AS cargo_nome, "+
+                "em.id AS empresa_id, em.cnpj, em.nome AS empresa_nome, em.segmento "+
+                "FROM Exame e "+
+                "JOIN Paciente p ON e.paciente_id = p.id "+
+                "JOIN Medico m ON e.medico_id = m.id "+
+                "JOIN Cargo c ON p.cargo_id = c.id "+
+                "JOIN Empresa em ON p.empresa_id = em.id " +
+                "WHERE e.id = ?";
+
+        Cursor cursor = dataBase.rawQuery(sql, null);
+
+        while (cursor.moveToNext()) {
+            int exameId = cursor.getInt(0);
+            String tipoExameStr = cursor.getString(1);
+            String resultado = cursor.getString(2);
+            String dataStr = cursor.getString(3);
+
+            int pacienteId = cursor.getInt(4);
+            String pacienteCpf = cursor.getString(5);
+            String pacienteNome = cursor.getString(6);
+
+            int medicoId = cursor.getInt(7);
+            String medicoCnpj = cursor.getString(8);
+            String medicoNome = cursor.getString(9);
+            String medicoEmail = cursor.getString(10);
+            String especialidadeStr = cursor.getString(11);
+
+            int cargoId = cursor.getInt(12);
+            String cargoNome = cursor.getString(13);
+
+            int empresaId = cursor.getInt(14);
+            String empresaCnpj = cursor.getString(15);
+            String empresaNome = cursor.getString(16);
+            String segmentoStr = cursor.getString(17);
+
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
+            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr);
+            TipoExameEnum tipoExame = TipoExameEnum.valueOf(tipoExameStr);
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            Date data = format.parse(dataStr);
+
+            Cargo cargo = new Cargo(cargoId, cargoNome);
+            Empresa empresa = new Empresa(empresaId, empresaCnpj, empresaNome, segmento);
+            Paciente paciente = new Paciente(pacienteId, pacienteCpf, pacienteNome, empresa, cargo);
+            Medico medico = new Medico(medicoId, medicoCnpj,medicoNome,medicoEmail,especialidade);
+            exame = new Exame(exameId, medico, paciente, resultado,tipoExame,data);
+
+        }
+        return exame;
+    }
+
+    public void deletar(Integer id){
+        dataBase.delete("Exame", "id = ?", new String[] { String.valueOf(id) });
+    }
 }

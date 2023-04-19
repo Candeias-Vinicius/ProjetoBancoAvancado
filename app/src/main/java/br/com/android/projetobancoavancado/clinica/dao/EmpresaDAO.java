@@ -56,8 +56,30 @@ public class EmpresaDAO {
         }
     }
 
-    public void deletar(Empresa empresa){
+    public Empresa BuscarPorId(Integer id){
 
-        dataBase.delete("Empresa", "id = ?", new String[] { String.valueOf(empresa.getId()) });
+        Empresa empresa = new Empresa(null, null, null, null);
+
+        String sql = "SELECT * FROM Empresa WHERE id = ?";
+
+        Cursor cursor = dataBase.rawQuery(sql, null);
+
+        while (cursor.moveToNext()) {
+
+            int empresaId = cursor.getInt(0);
+            String cnpj = cursor.getString(1);
+            String nome = cursor.getString(2);
+            String segmentoStr = cursor.getString(3);
+
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
+
+            empresa = new Empresa(empresaId, cnpj, nome, segmento);
+
+        }
+        return empresa;
+    }
+    public void deletar(Integer id){
+
+        dataBase.delete("Empresa", "id = ?", new String[] { String.valueOf(id) });
     }
 }
