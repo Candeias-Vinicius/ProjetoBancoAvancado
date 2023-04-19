@@ -6,4 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".clinica.acitivity.MainActivity">
 
+    <Button
+        android:id="@+id/botaoCadastro"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:onClick="mostrarTiposDeCadastro"
+        android:text="Cadastro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.605" />
+
+    <Button
+        android:id="@+id/botaoListar"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:onClick="mostrarTiposDeLista"
+        android:text="Listar"
+        app:layout_constraintBottom_toTopOf="@+id/botaoCadastro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812" />
+
+    <Button
+        android:id="@+id/botaoPopular"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:onClick="popularBanco"
+        android:text="Popular Banco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botaoCadastro"
+        app:layout_constraintVertical_bias="0.928" />
+
+    <TextView
+        android:id="@+id/textViewLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif-monospace"
+        android:text="Clinica"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/botaoListar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
