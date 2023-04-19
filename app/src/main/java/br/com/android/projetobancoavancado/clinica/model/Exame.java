@@ -3,7 +3,7 @@ package br.com.android.projetobancoavancado.clinica.model;
 import java.util.Date;
 import java.util.Objects;
 
-import br.com.android.projetobancoavancado.clinica.enums.Tipo_Exame_Enum;
+import br.com.android.projetobancoavancado.clinica.enums.TipoExameEnum;
 
 public class Exame {
 
@@ -11,10 +11,10 @@ public class Exame {
     private Medico medico;
     private Paciente paciente;
     private String resultado;
-    private Tipo_Exame_Enum tipo_exame;
+    private TipoExameEnum tipo_exame;
     private Date data;
 
-    public Exame(Medico medico, Paciente paciente, String resultado, Tipo_Exame_Enum tipo_exame, Date data) {
+    public Exame(Medico medico, Paciente paciente, String resultado, TipoExameEnum tipo_exame, Date data) {
         this.id = id;
         this.medico = medico;
         this.paciente = paciente;
@@ -55,11 +55,11 @@ public class Exame {
         this.resultado = resultado;
     }
 
-    public Tipo_Exame_Enum getTipo_exame() {
+    public TipoExameEnum getTipo_exame() {
         return tipo_exame;
     }
 
-    public void setTipo_exame(Tipo_Exame_Enum tipo_exame) {
+    public void setTipo_exame(TipoExameEnum tipo_exame) {
         this.tipo_exame = tipo_exame;
     }
 

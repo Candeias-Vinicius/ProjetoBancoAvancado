@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import br.com.android.projetobancoavancado.clinica.dao.EmpresaDAO;
 import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.CNPJGenerator;
 import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.CPFGenerator;
 import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.CRMGenerator;
@@ -15,7 +16,7 @@ import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.TipoEx
 import br.com.android.projetobancoavancado.clinica.enums.EspecialidadeEnum;
 import br.com.android.projetobancoavancado.clinica.enums.RiscoOcupacionaEnum;
 import br.com.android.projetobancoavancado.clinica.enums.SegmentoEnum;
-import br.com.android.projetobancoavancado.clinica.enums.Tipo_Exame_Enum;
+import br.com.android.projetobancoavancado.clinica.enums.TipoExameEnum;
 import br.com.android.projetobancoavancado.clinica.model.Empresa;
 import br.com.android.projetobancoavancado.clinica.util.DBHelper;
 
@@ -49,6 +50,7 @@ public class DBPopulator {
 
         String nome = faker.name().fullName();
         String cpf = CPFGenerator.generate();
+
         //TODO add empresa e cargo
 
     }
@@ -65,7 +67,7 @@ public class DBPopulator {
 
         //TODO add paciente e medico
         String resultado = faker.medical().diseaseName();
-        Tipo_Exame_Enum tipoExame = TipoExameGenerator.generate();
+        TipoExameEnum tipoExame = TipoExameGenerator.generate();
         Date dataExame  = faker.date().past(90, TimeUnit.DAYS);
 
     }
@@ -74,5 +76,6 @@ public class DBPopulator {
         RiscoOcupacionaEnum riscoOcupacional = RiscoOcupacionalGenerator.generate();
 
 }
+
 
 }

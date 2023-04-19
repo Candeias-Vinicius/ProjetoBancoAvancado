@@ -29,7 +29,7 @@ public class EmpresaDAO {
         values.put("nome", empresa.getNome());
         values.put("especialidade", empresa.getSegmento().getNome());
 
-        dataBase.insert("empresas",null,values);
+        dataBase.insert("Empresa",null,values);
 
     }
 
@@ -37,7 +37,7 @@ public class EmpresaDAO {
 
         List<Empresa> empresas = new ArrayList<Empresa>();
 
-        String sql = "SELECT * FROM empresas";
+        String sql = "SELECT * FROM Empresa";
 
         Cursor cursor = dataBase.rawQuery(sql, null);
 
@@ -58,6 +58,6 @@ public class EmpresaDAO {
 
     public void deletar(Empresa empresa){
 
-        dataBase.delete("empresa", "id = ?", new String[] { String.valueOf(empresa.getId()) });
+        dataBase.delete("Empresa", "id = ?", new String[] { String.valueOf(empresa.getId()) });
     }
 }

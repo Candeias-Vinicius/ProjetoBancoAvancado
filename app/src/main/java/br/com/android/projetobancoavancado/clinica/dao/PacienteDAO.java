@@ -33,7 +33,7 @@ public class PacienteDAO {
         values.put("empresa_id", paciente.getEmpresa().getId());
         values.put("cargo_id", paciente.getCargo().getId());
 
-        dataBase.insert("pacientes",null,values);
+        dataBase.insert("Paciente",null,values);
 
     }
 
@@ -43,9 +43,9 @@ public class PacienteDAO {
 
         String sql = "SELECT p.id, p.cpf, p.nome, c.id AS cargo_id, c.nome AS cargo_nome, " +
                 "e.id AS empresa_id, e.cnpj, e.nome AS empresa_nome, e.segmento " +
-                "FROM paciente p " +
-                "JOIN cargo c ON p.cargo_id = c.id " +
-                "JOIN empresa e ON p.empresa_id = e.id";
+                "FROM Paciente p " +
+                "JOIN Cargo c ON p.cargo_id = c.id " +
+                "JOIN Empresa e ON p.empresa_id = e.id";
 
         Cursor cursor = dataBase.rawQuery(sql, null);
 
@@ -75,6 +75,6 @@ public class PacienteDAO {
 
     public void deletar(Paciente paciente){
 
-        dataBase.delete("paciente", "id = ?", new String[] { String.valueOf(paciente.getId()) });
+        dataBase.delete("Paciente", "id = ?", new String[] { String.valueOf(paciente.getId()) });
     }
 }

@@ -32,7 +32,7 @@ public class MedicoDAO {
         values.put("email", medico.getEmail());
         values.put("especialidade", medico.getEspecialidade().getNome());
 
-        dataBase.insert("medicos",null,values);
+        dataBase.insert("Medico",null,values);
 
     }
 
@@ -40,7 +40,7 @@ public class MedicoDAO {
 
         List<Medico> medicos = new ArrayList<Medico>();
 
-        String sql = "SELECT * FROM medicos";
+        String sql = "SELECT * FROM Medico";
 
         Cursor cursor = dataBase.rawQuery(sql, null);
 
