@@ -32,7 +32,7 @@ public class ExameDAO {
         values.put("tipo_exame", exame.getTipo_exame().getNome());
         values.put("data", exame.getData().toString());
 
-        dataBase.insert("exame",null,values);
+        dataBase.insert("Exame",null,values);
 
     }
 

@@ -5,7 +5,6 @@ import com.github.javafaker.Faker;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import br.com.android.projetobancoavancado.clinica.dao.EmpresaDAO;
 import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.CNPJGenerator;
 import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.CPFGenerator;
 import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.CRMGenerator;
@@ -14,11 +13,10 @@ import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.RiscoO
 import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.SegmentoGenerator;
 import br.com.android.projetobancoavancado.clinica.dbEnrichment.generator.TipoExameGenerator;
 import br.com.android.projetobancoavancado.clinica.enums.EspecialidadeEnum;
-import br.com.android.projetobancoavancado.clinica.enums.RiscoOcupacionaEnum;
+import br.com.android.projetobancoavancado.clinica.enums.RiscoOcupacionalEnum;
 import br.com.android.projetobancoavancado.clinica.enums.SegmentoEnum;
 import br.com.android.projetobancoavancado.clinica.enums.TipoExameEnum;
 import br.com.android.projetobancoavancado.clinica.model.Empresa;
-import br.com.android.projetobancoavancado.clinica.util.DBHelper;
 
 public class DBPopulator {
     Faker faker = new Faker();
@@ -73,7 +71,7 @@ public class DBPopulator {
     }
     private void criarAtestados(){
         //TODO add exame
-        RiscoOcupacionaEnum riscoOcupacional = RiscoOcupacionalGenerator.generate();
+        RiscoOcupacionalEnum riscoOcupacional = RiscoOcupacionalGenerator.generate();
 
 }
 

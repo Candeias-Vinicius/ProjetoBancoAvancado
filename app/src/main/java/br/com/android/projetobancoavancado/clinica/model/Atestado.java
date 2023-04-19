@@ -1,14 +1,14 @@
 package br.com.android.projetobancoavancado.clinica.model;
 
-import br.com.android.projetobancoavancado.clinica.enums.RiscoOcupacionaEnum;
+import br.com.android.projetobancoavancado.clinica.enums.RiscoOcupacionalEnum;
 
 public class Atestado {
 
     private Integer id;
     private Exame exame;
-    private RiscoOcupacionaEnum riscoOcupacional;
+    private RiscoOcupacionalEnum riscoOcupacional;
 
-    public Atestado(Integer id, Exame exame, RiscoOcupacionaEnum riscoOcupacional) {
+    public Atestado(Integer id, Exame exame, RiscoOcupacionalEnum riscoOcupacional) {
         this.id = id;
         this.exame = exame;
         this.riscoOcupacional = riscoOcupacional;
@@ -30,11 +30,11 @@ public class Atestado {
         this.exame = exame;
     }
 
-    public RiscoOcupacionaEnum getRiscoOcupacional() {
+    public RiscoOcupacionalEnum getRiscoOcupacional() {
         return riscoOcupacional;
     }
 
-    public void setRiscoOcupacional(RiscoOcupacionaEnum riscoOcupacional) {
+    public void setRiscoOcupacional(RiscoOcupacionalEnum riscoOcupacional) {
         this.riscoOcupacional = riscoOcupacional;
     }
 }

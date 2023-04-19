@@ -4,19 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import br.com.android.projetobancoavancado.clinica.enums.EspecialidadeEnum;
-import br.com.android.projetobancoavancado.clinica.enums.Tipo_Exame_Enum;
+import br.com.android.projetobancoavancado.clinica.enums.TipoExameEnum;
 
 public class TipoExameGenerator {
-    public static Tipo_Exame_Enum generate() {
+    public static TipoExameEnum generate() {
         Random random = new Random();
 
-        Map<Integer, Tipo_Exame_Enum> mapaTipoExames = new HashMap<Integer, Tipo_Exame_Enum>();
-        mapaTipoExames.put(1, Tipo_Exame_Enum.ADMISSIONAL);
-        mapaTipoExames.put(2, Tipo_Exame_Enum.DEMISSIONAL);
-        mapaTipoExames.put(3, Tipo_Exame_Enum.PERIODICO);
-        mapaTipoExames.put(4, Tipo_Exame_Enum.RETORNO_AO_TRABALHO);
-        mapaTipoExames.put(5, Tipo_Exame_Enum.TRANSFERENCIA_DE_FUNCAO);
+        Map<Integer, TipoExameEnum> mapaTipoExames = new HashMap<Integer, TipoExameEnum>();
+        mapaTipoExames.put(1, TipoExameEnum.ADMISSIONAL);
+        mapaTipoExames.put(2, TipoExameEnum.DEMISSIONAL);
+        mapaTipoExames.put(3, TipoExameEnum.PERIODICO);
+        mapaTipoExames.put(4, TipoExameEnum.RETORNO_AO_TRABALHO);
+        mapaTipoExames.put(5, TipoExameEnum.TRANSFERENCIA_DE_FUNCAO);
 
         int randomKey = random.nextInt(4) + 1;
 

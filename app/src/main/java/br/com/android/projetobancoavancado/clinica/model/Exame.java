@@ -14,6 +14,15 @@ public class Exame {
     private TipoExameEnum tipo_exame;
     private Date data;
 
+    public Exame(Integer id, Medico medico, Paciente paciente, String resultado, TipoExameEnum tipo_exame, Date data) {
+        this.id = id;
+        this.medico = medico;
+        this.paciente = paciente;
+        this.resultado = resultado;
+        this.tipo_exame = tipo_exame;
+        this.data = data;
+    }
+
     public Exame(Medico medico, Paciente paciente, String resultado, TipoExameEnum tipo_exame, Date data) {
         this.id = id;
         this.medico = medico;

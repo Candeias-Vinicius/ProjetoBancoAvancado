@@ -1,12 +1,12 @@
 package br.com.android.projetobancoavancado.clinica.enums;
 
-public enum RiscoOcupacionaEnum {
+public enum RiscoOcupacionalEnum {
 
     QUIMICO("Quimico"), FISICO("Fisico"), BIOLOGICO("Biologico");
 
     String nomeRisco;
 
-    RiscoOcupacionaEnum(String nomeRisco) {
+    RiscoOcupacionalEnum(String nomeRisco) {
         this.nomeRisco = nomeRisco;
     }
 
