@@ -14,6 +14,11 @@ public class Atestado {
         this.riscoOcupacional = riscoOcupacional;
     }
 
+    public Atestado(Exame exame, RiscoOcupacionalEnum riscoOcupacional) {
+        this.exame = exame;
+        this.riscoOcupacional = riscoOcupacional;
+    }
+
     public Integer getId() {
         return id;
     }
