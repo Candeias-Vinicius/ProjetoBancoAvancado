@@ -17,12 +17,12 @@ import br.com.android.projetobancoavancado.clinica.dao.PacienteDAO;
 import br.com.android.projetobancoavancado.clinica.dbEnrichment.DataBuilder;
 
 public class MainActivity extends AppCompatActivity {
-    private final EmpresaDAO empresaDAO = new EmpresaDAO(MainActivity.this);
-    private final CargoDAO cargoDAO = new CargoDAO(MainActivity.this);
-    private final PacienteDAO pacienteDAO = new PacienteDAO(MainActivity.this);
-    private final MedicoDAO medicoDAO = new MedicoDAO(MainActivity.this);
-    private final ExameDAO exameDAO = new ExameDAO(MainActivity.this);
-    private final AtestadoDAO atestadoDAO = new AtestadoDAO(MainActivity.this);
+    private EmpresaDAO empresaDAO;
+    private CargoDAO cargoDAO ;
+    private  PacienteDAO pacienteDAO;
+    private  MedicoDAO medicoDAO;
+    private  ExameDAO exameDAO;
+    private  AtestadoDAO atestadoDAO;
     private final DataBuilder dataBuilder = new DataBuilder();
     private static final int NUM_EMPRESAS = 20;
     private static final int NUM_PACIENTES = 100;
@@ -61,6 +61,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void popularBanco(View view){
+            empresaDAO = new EmpresaDAO(MainActivity.this);
+            cargoDAO = new CargoDAO(MainActivity.this);
+            pacienteDAO = new PacienteDAO(MainActivity.this);
+            medicoDAO = new MedicoDAO(MainActivity.this);
+            exameDAO = new ExameDAO(MainActivity.this);
+            atestadoDAO = new AtestadoDAO(MainActivity.this);
         try {
             int tentativa = 0;
 
@@ -70,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     tentativa++;
                     if (tentativa <= MAX_TENTATIVAS) {
-                        System.out.println("Erro ao inserir dado na base, tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
+                        System.out.println("Erro ao inserir dado na base 'Empresa', tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
                         i--;
                     } else {
                         throw new Exception("Número máximo de " + MAX_TENTATIVAS + " tentativas excedido ao tentar popular banco");
@@ -78,14 +84,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            tentativa = 0;
+           tentativa = 0;
             for (int i = 0; i <= NUM_CARGOS; i++) {
                 try {
                     cargoDAO.insert(dataBuilder.criarCargo());
                 } catch (Exception e) {
                     tentativa++;
                     if (tentativa <= MAX_TENTATIVAS) {
-                        System.out.println("Erro ao inserir dado na base, tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
+                        System.out.println("Erro ao inserir dado na base 'Cargo', tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
                         i--;
                     } else {
                         throw new Exception("Número máximo de " + MAX_TENTATIVAS + " tentativas excedido ao tentar popular banco");
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     tentativa++;
                     if (tentativa <= MAX_TENTATIVAS) {
-                        System.out.println("Erro ao inserir dado na base, tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
+                        System.out.println("Erro ao inserir dado na base 'Paciente', tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
                         i--;
                     } else {
                         throw new Exception("Número máximo de " + MAX_TENTATIVAS + " tentativas excedido ao tentar popular banco");
@@ -118,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     tentativa++;
                     if (tentativa <= MAX_TENTATIVAS) {
-                        System.out.println("Erro ao inserir dado na base, tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
+                        System.out.println("Erro ao inserir dado na base 'Medico', tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
                         i--;
                     } else {
                         throw new Exception("Número máximo de " + MAX_TENTATIVAS + " tentativas excedido ao tentar popular banco");
@@ -134,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     tentativa++;
                     if (tentativa <= MAX_TENTATIVAS) {
-                        System.out.println("Erro ao inserir dado na base, tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
+                        System.out.println("Erro ao inserir dado na base 'Exame', tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
                         i--;
                     } else {
                         throw new Exception("Número máximo de " + MAX_TENTATIVAS + " tentativas excedido ao tentar popular banco");
@@ -149,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     tentativa++;
                     if (tentativa <= MAX_TENTATIVAS) {
-                        System.out.println("Erro ao inserir dado na base, tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
+                        System.out.println("Erro ao inserir dado na base 'Atestado', tentando novamente. Tentativa " + tentativa + " de " + MAX_TENTATIVAS);
                         i--;
                     } else {
                         throw new Exception("Número máximo de " + MAX_TENTATIVAS + " tentativas excedido ao tentar popular banco");
@@ -157,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }catch (Exception e){
-            System.out.println("Deu ruim");
+            System.out.println("Erro ao popular base!");
             //Lançar mensagem de erro na tela e deletar o conteúdo parcial criada na base.
         }
     }
