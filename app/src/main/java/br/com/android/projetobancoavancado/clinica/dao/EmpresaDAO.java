@@ -27,7 +27,7 @@ public class EmpresaDAO {
 
         values.put("cnpj", empresa.getCnpj());
         values.put("nome", empresa.getNome());
-        values.put("especialidade", empresa.getSegmento().getNome());
+        values.put("segmento", empresa.getSegmento().getNome());
 
         dataBase.insert("Empresa",null,values);
 

@@ -21,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("CREATE TABLE IF NOT EXISTS Paciente (id integer PRIMARY KEY AUTOINCREMENT," +
-                "cpf varchar(11), nome varchar(255), FOREIGN KEY(empresa_id) REFERENCES empresa(id), FOREIGN KEY(cargo_id) REFERENCES cargo(id))");
+                "cpf varchar(11), nome varchar(255), empresa_id integer, cargo_id integer, FOREIGN KEY(empresa_id) REFERENCES Empresa(id), FOREIGN KEY(cargo_id) REFERENCES Cargo(id))");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS Medico (id integer PRIMARY KEY AUTOINCREMENT," +
                 "crm varchar(12), nome varchar(255), email varchar(255), especialidade varchar(255))");
@@ -33,10 +33,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 "cnpj varchar(11), nome varchar(255), segmento varchar(255))");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS Exame (id integer PRIMARY KEY AUTOINCREMENT," +
-                "resultado varchar(11), tipo_exame varchar(255), data DATE, FOREIGN KEY(medico_id) REFERENCES medico(id), FOREIGN KEY(paciente_id) REFERENCES paciente(id))");
+                "resultado varchar(11), tipo_exame varchar(255), data DATE, medico_id integer, paciente_id integer,FOREIGN KEY(medico_id) REFERENCES Medico(id), FOREIGN KEY(paciente_id) REFERENCES Paciente(id))");
 
         db.execSQL("CREATE TABLE IF NOT EXISTS Atestado (id integer PRIMARY KEY AUTOINCREMENT," +
-                "risco_ocupacional varchar(255), FOREIGN KEY(exame_id) REFERENCES exame(id))");
+                "risco_ocupacional varchar(255), exame_id integer, FOREIGN KEY(exame_id) REFERENCES Exame(id))");
     }
 
     @Override

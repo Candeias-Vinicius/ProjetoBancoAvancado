@@ -12,19 +12,22 @@
         android:theme="@style/Theme.ProjetoBancoAvancado"
         tools:targetApi="31">
         <activity
-            android:name=".clinica.acitivity.ListarActivity"
+            android:name=".ListarEmpresaActivity"
             android:exported="false" />
         <activity
-            android:name=".clinica.acitivity.CadastroActivity"
+            android:name=".clinica.activity.ListarActivity"
             android:exported="false" />
         <activity
-            android:name=".clinica.acitivity.MainActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:name=".clinica.activity.CadastroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".clinica.activity.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

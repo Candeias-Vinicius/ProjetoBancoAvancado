@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.android.projetobancoavancado.clinica.enums.EspecialidadeEnum;
 import br.com.android.projetobancoavancado.clinica.enums.RiscoOcupacionalEnum;
@@ -56,7 +57,7 @@ public class AtestadoDAO {
                 "emp.nome AS empresa_nome, emp.segmento AS empresa_segmento, c.id AS cargo_id, " +
                 "c.nome AS cargo_nome " +
                 "FROM Atestado a " +
-                "INNER JOIN Exame e ON a.id_exame = e.id " +
+                "INNER JOIN Exame e ON a.exame_id = e.id " +
                 "INNER JOIN Medico m ON e.medico_id = m.id " +
                 "INNER JOIN Paciente p ON e.paciente_id = p.id " +
                 "INNER JOIN Empresa emp ON p.empresa_id = emp.id " +
@@ -94,12 +95,12 @@ public class AtestadoDAO {
             int cargoId = cursor.getInt(20);
             String cargoNome = cursor.getString(21);
 
-            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
-            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr);
-            RiscoOcupacionalEnum riscoOcupacional = RiscoOcupacionalEnum.valueOf(riscoOcupacionalStr);
-            TipoExameEnum tipoExame = TipoExameEnum.valueOf(tipoExameStr);
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr.toUpperCase());
+            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr.toUpperCase());
+            RiscoOcupacionalEnum riscoOcupacional = RiscoOcupacionalEnum.valueOf(riscoOcupacionalStr.toUpperCase());
+            TipoExameEnum tipoExame = TipoExameEnum.valueOf(tipoExameStr.toUpperCase());
 
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
             Date data = format.parse(dataStr);
 
             Cargo cargo = new Cargo(cargoId, cargoNome);

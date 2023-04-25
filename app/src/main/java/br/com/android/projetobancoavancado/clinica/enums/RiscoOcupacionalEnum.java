@@ -2,7 +2,7 @@ package br.com.android.projetobancoavancado.clinica.enums;
 
 public enum RiscoOcupacionalEnum {
 
-    QUIMICO("Quimico"), FISICO("Fisico"), BIOLOGICO("Biologico");
+    QUIMICO("quimico"), FISICO("fisico"), BIOLOGICO("biologico");
 
     String nomeRisco;
 

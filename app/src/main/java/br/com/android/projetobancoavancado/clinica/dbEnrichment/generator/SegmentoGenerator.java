@@ -1,6 +1,8 @@
 package br.com.android.projetobancoavancado.clinica.dbEnrichment.generator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -11,19 +13,21 @@ public class SegmentoGenerator {
     public static SegmentoEnum generate() {
         Random random = new Random();
 
-        Map<Integer, SegmentoEnum> mapaSegmentos = new HashMap<Integer,SegmentoEnum>();
-        mapaSegmentos.put(1,SegmentoEnum.VAREJO);
-        mapaSegmentos.put(2, SegmentoEnum.TRANSPORTE);
-        mapaSegmentos.put(3, SegmentoEnum.TECNOLOGIA);
-        mapaSegmentos.put(4, SegmentoEnum.SAUDE);
-        mapaSegmentos.put(5, SegmentoEnum.INDUSTRIA);
-        mapaSegmentos.put(6, SegmentoEnum.FINANCEIRO);
-        mapaSegmentos.put(7, SegmentoEnum.ENERGIA);
-        mapaSegmentos.put(8, SegmentoEnum.AGRICULTURA);
+        List<SegmentoEnum> segmentos = new ArrayList<>();
 
-        int randomKey = random.nextInt(7) + 1;
+        segmentos.add(SegmentoEnum.VAREJO);
+        segmentos.add(SegmentoEnum.TRANSPORTE);
+        segmentos.add(SegmentoEnum.TECNOLOGIA);
+        segmentos.add(SegmentoEnum.SAUDE);
+        segmentos.add(SegmentoEnum.INDUSTRIA);
+        segmentos.add(SegmentoEnum.FINANCEIRO);
+        segmentos.add(SegmentoEnum.ENERGIA);
+        segmentos.add(SegmentoEnum.AGRICULTURA);
 
-        return mapaSegmentos.get(randomKey);
+
+        int randomKey = random.nextInt(8) ;
+
+        return segmentos.get(randomKey);
 
     }
 }
