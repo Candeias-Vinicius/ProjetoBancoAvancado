@@ -36,7 +36,7 @@ public class MedicoDAO {
 
     }
 
-    public void listar(){
+    public List<Medico> listarTodos(){
 
         List<Medico> medicos = new ArrayList<Medico>();
 
@@ -52,12 +52,13 @@ public class MedicoDAO {
             String email = cursor.getString(3);
             String especialidadeStr = cursor.getString(4);
 
-            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr);
+            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr.toUpperCase());
 
             Medico medico = new Medico(id, crm, nome, email, especialidade);
 
             medicos.add(medico);
         }
+        return medicos;
     }
 
     public Medico buscarPorId(Integer id) {
@@ -76,7 +77,7 @@ public class MedicoDAO {
             String email = cursor.getString(3);
             String especialidadeStr = cursor.getString(4);
 
-            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr);
+            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr.toUpperCase());
 
             medico = new Medico(medicoId, crm, nome, email, especialidade);
         }

@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.android.projetobancoavancado.clinica.enums.EspecialidadeEnum;
 import br.com.android.projetobancoavancado.clinica.enums.SegmentoEnum;
@@ -46,13 +47,13 @@ public class ExameDAO {
 
     }
 
-    public List<Exame> buscarExames() throws ParseException {
+    public List<Exame> listarTodos() throws ParseException {
 
         List<Exame> exames = new ArrayList<Exame>();
 
-        String sql = "SELECT e.id, e.nome, e.tipo, e.resultado, e.data, "+
+        String sql = "SELECT e.id, e.tipo_exame, e.resultado, e.data, "+
                 "p.id AS paciente_id, p.cpf, p.nome AS paciente_nome, "+
-                "m.id AS medico_id, m.cnpj, m.nome AS medico_nome, m.email AS medico_email, m.especialidade AS medico_especialidade, "+
+                "m.id AS medico_id, m.crm, m.nome AS medico_nome, m.email AS medico_email, m.especialidade AS medico_especialidade, "+
                 "c.id AS cargo_id, c.nome AS cargo_nome, "+
                 "em.id AS empresa_id, em.cnpj, em.nome AS empresa_nome, em.segmento "+
                 "FROM Exame e "+
@@ -65,33 +66,32 @@ public class ExameDAO {
 
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
-            String nome = cursor.getString(1);
-            String tipoExameStr = cursor.getString(2);
-            String resultado = cursor.getString(3);
-            String dataStr = cursor.getString(4);
+            String tipoExameStr = cursor.getString(1);
+            String resultado = cursor.getString(2);
+            String dataStr = cursor.getString(3);
 
-            int pacienteId = cursor.getInt(5);
-            String pacienteCpf = cursor.getString(6);
-            String pacienteNome = cursor.getString(7);
+            int pacienteId = cursor.getInt(4);
+            String pacienteCpf = cursor.getString(5);
+            String pacienteNome = cursor.getString(6);
 
-            int medicoId = cursor.getInt(8);
-            String medicoCnpj = cursor.getString(9);
-            String medicoNome = cursor.getString(10);
-            String medicoEmail = cursor.getString(11);
-            String especialidadeStr = cursor.getString(12);
+            int medicoId = cursor.getInt(7);
+            String medicoCnpj = cursor.getString(8);
+            String medicoNome = cursor.getString(9);
+            String medicoEmail = cursor.getString(10);
+            String especialidadeStr = cursor.getString(11);
 
-            int cargoId = cursor.getInt(7);
-            String cargoNome = cursor.getString(8);
+            int cargoId = cursor.getInt(12);
+            String cargoNome = cursor.getString(13);
 
-            int empresaId = cursor.getInt(9);
-            String empresaCnpj = cursor.getString(10);
-            String empresaNome = cursor.getString(11);
-            String segmentoStr = cursor.getString(12);
+            int empresaId = cursor.getInt(14);
+            String empresaCnpj = cursor.getString(15);
+            String empresaNome = cursor.getString(16);
+            String segmentoStr = cursor.getString(17);
 
-            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
-            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr);
-            TipoExameEnum tipoExame = TipoExameEnum.valueOf(tipoExameStr);
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr.toUpperCase());
+            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr.toUpperCase());
+            TipoExameEnum tipoExame = TipoExameEnum.valueOf(tipoExameStr.toUpperCase());
+            SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
             Date data = format.parse(dataStr);
 
             Cargo cargo = new Cargo(cargoId, cargoNome);
@@ -108,7 +108,7 @@ public class ExameDAO {
     public Exame buscarPorId(Integer id) throws ParseException {
         Exame exame = new Exame(null, null,null,null,null, null);
 
-        String sql = "SELECT e.id, e.tipo, e.resultado, e.data, "+
+        String sql = "SELECT e.id, e.tipo_exame, e.resultado, e.data, "+
                 "p.id AS paciente_id, p.cpf, p.nome AS paciente_nome, "+
                 "m.id AS medico_id, m.cnpj, m.nome AS medico_nome, m.email AS medico_email, m.especialidade AS medico_especialidade, "+
                 "c.id AS cargo_id, c.nome AS cargo_nome, "+
@@ -146,10 +146,10 @@ public class ExameDAO {
             String empresaNome = cursor.getString(16);
             String segmentoStr = cursor.getString(17);
 
-            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
-            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr);
-            TipoExameEnum tipoExame = TipoExameEnum.valueOf(tipoExameStr);
-            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr.toUpperCase());
+            EspecialidadeEnum especialidade = EspecialidadeEnum.valueOf(especialidadeStr.toUpperCase());
+            TipoExameEnum tipoExame = TipoExameEnum.valueOf(tipoExameStr.toUpperCase());
+            SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
             Date data = format.parse(dataStr);
 
             Cargo cargo = new Cargo(cargoId, cargoNome);

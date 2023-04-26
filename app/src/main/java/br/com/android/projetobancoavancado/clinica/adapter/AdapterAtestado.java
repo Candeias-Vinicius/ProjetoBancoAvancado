@@ -72,14 +72,14 @@ public class AdapterAtestado extends RecyclerView.Adapter<AdapterAtestado.MyView
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nome = itemView.findViewById(R.id.textNome);
-            cpf = itemView.findViewById(R.id.textCpf);
-            medico = itemView.findViewById(R.id.textNomeMedico);
-            crm = itemView.findViewById(R.id.textCrmMedico);
-            resultado = itemView.findViewById(R.id.textResultadoExame);
-            cargo = itemView.findViewById(R.id.textCargo);
-            empresa = itemView.findViewById(R.id.textEmpresa);
-            riscoOcupacional = itemView.findViewById(R.id.textRiscoOcupacional);
+            nome = itemView.findViewById(R.id.NomePacienteAtestado);
+            cpf = itemView.findViewById(R.id.CpfPacienteAtestado);
+            medico = itemView.findViewById(R.id.NomeMedicoAtestado);
+            crm = itemView.findViewById(R.id.CrmMedicoAtestado);
+            resultado = itemView.findViewById(R.id.ResultadoExameAtestado);
+            cargo = itemView.findViewById(R.id.CargoPacienteAtestado);
+            empresa = itemView.findViewById(R.id.EmpresaPacienteAtestado);
+            riscoOcupacional = itemView.findViewById(R.id.RiscoOcupacionalAtestado);
         }
     }
 }

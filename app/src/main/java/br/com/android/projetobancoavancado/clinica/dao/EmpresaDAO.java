@@ -33,7 +33,7 @@ public class EmpresaDAO {
 
     }
 
-    public void listar(){
+    public List<Empresa> listarTodos(){
 
         List<Empresa> empresas = new ArrayList<Empresa>();
 
@@ -48,12 +48,13 @@ public class EmpresaDAO {
             String nome = cursor.getString(2);
             String segmentoStr = cursor.getString(3);
 
-            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr.toUpperCase());
 
             Empresa empresa = new Empresa(id, cnpj, nome, segmento);
 
             empresas.add(empresa);
         }
+        return empresas;
     }
 
     public Empresa BuscarPorId(Integer id){
@@ -71,7 +72,7 @@ public class EmpresaDAO {
             String nome = cursor.getString(2);
             String segmentoStr = cursor.getString(3);
 
-            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr.toUpperCase());
 
             empresa = new Empresa(empresaId, cnpj, nome, segmento);
 

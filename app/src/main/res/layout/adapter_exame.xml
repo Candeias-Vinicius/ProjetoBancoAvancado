@@ -11,25 +11,25 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textNomePacienteAtestado"
+            android:id="@+id/textNomePacienteExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:text="Nome:"
+            android:text="Paciente:"
             android:textSize="16sp" />
 
 
         <TextView
 
-            android:id="@+id/NomePacienteAtestado"
+            android:id="@+id/NomePacienteExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Nome"
+            android:text="Paciente"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textCpfPacienteAtestado"
+            android:id="@+id/textCpfPacienteExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
@@ -37,7 +37,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/CpfPacienteAtestado"
+            android:id="@+id/CpfPacienteExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,7 +53,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textNomeMedicoAtestado"
+            android:id="@+id/textNomeMedicoExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
@@ -61,7 +61,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/NomeMedicoAtestado"
+            android:id="@+id/NomeMedicoExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
@@ -69,15 +69,15 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/textCrmMedicoAtestado"
+            android:id="@+id/textCrmMedicoExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:text="CRM"
+            android:text="CRM:"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/CrmMedicoAtestado"
+            android:id="@+id/CrmMedicoExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
@@ -93,20 +93,37 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textResultadoExameAtestado"
+            android:id="@+id/textResultadoExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:text="Resultado do Exame:"
+            android:text="Resultado:"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/ResultadoExameAtestado"
+            android:id="@+id/ResultadoExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Exame"
             android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textTipoExame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:text="Tipo do Exame:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/TipoExame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tipo do Exame"
+            android:textSize="16sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -115,59 +132,21 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textRiscoOcupacionalAtestado"
+            android:id="@+id/textDataExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:text="Risco Ocupacional:"
+            android:text="Data do Exame:"
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/RiscoOcupacionalAtestado"
+            android:id="@+id/DataExame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Risco"
+            android:text="Data"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/textCargoPacienteAtestado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:text="Cargo:"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/CargoPacienteAtestado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Cargo"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textEmpresaPacienteAtestado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:text="Empresa:"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/EmpresaPacienteAtestado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Empresa"
-            android:textSize="16sp" />
 
     </LinearLayout>
 

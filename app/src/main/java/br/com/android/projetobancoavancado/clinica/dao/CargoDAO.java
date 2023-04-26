@@ -31,7 +31,7 @@ public class CargoDAO {
 
 
     }
-    public void listarTodos(){
+    public List<Cargo> listarTodos(){
 
         List<Cargo> cargos = new ArrayList<Cargo>();
 
@@ -48,6 +48,7 @@ public class CargoDAO {
 
             cargos.add(cargo);
         }
+        return cargos;
     }
 
     public Cargo buscaCargoPorId(Integer id) {

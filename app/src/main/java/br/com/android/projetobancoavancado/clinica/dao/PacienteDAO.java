@@ -62,7 +62,7 @@ public class PacienteDAO {
             String segmentoStr = cursor.getString(8);
 
 
-            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr.toUpperCase());
 
             Cargo cargo = new Cargo(cargoId, cargoNome);
             Empresa empresa = new Empresa(empresaId, cnpj, empresaNome, segmento);
@@ -101,7 +101,7 @@ public class PacienteDAO {
             String segmentoStr = cursor.getString(8);
 
 
-            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr);
+            SegmentoEnum segmento = SegmentoEnum.valueOf(segmentoStr.toUpperCase());
 
             Cargo cargo = new Cargo(cargoId, cargoNome);
             Empresa empresa = new Empresa(empresaId, cnpj, empresaNome, segmento);

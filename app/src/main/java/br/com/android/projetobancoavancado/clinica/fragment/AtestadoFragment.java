@@ -28,10 +28,10 @@ public class AtestadoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_atestado, container, false);
+        View view = inflater.inflate(R.layout.fragment, container, false);
 
 
-        recyclerView = view.findViewById(R.id.recyclerViewAtestado);
+        recyclerView = view.findViewById(R.id.recyclerView);
         AdapterAtestado adapter = new AdapterAtestado(list());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
