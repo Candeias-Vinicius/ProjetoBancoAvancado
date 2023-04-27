@@ -16,6 +16,7 @@ import br.com.android.projetobancoavancado.clinica.fragment.EmpresaFragment;
 import br.com.android.projetobancoavancado.clinica.fragment.ExameFragment;
 import br.com.android.projetobancoavancado.clinica.fragment.MedicoFragment;
 import br.com.android.projetobancoavancado.clinica.fragment.PacienteFragment;
+import br.com.android.projetobancoavancado.clinica.fragment.RiscoOcupacionalFragment;
 
 public class ListarActivity extends AppCompatActivity {
 
@@ -38,6 +39,7 @@ public class ListarActivity extends AppCompatActivity {
                 .add("Exames", ExameFragment.class)
                 .add("Medicos", MedicoFragment.class)
                 .add("Pacientes", PacienteFragment.class)
+                .add("Riscos Ocupacionais", RiscoOcupacionalFragment.class)
                 .create());
 
         viewPager.setAdapter(adapter);

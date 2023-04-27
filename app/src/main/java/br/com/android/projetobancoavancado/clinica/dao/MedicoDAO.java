@@ -87,4 +87,7 @@ public class MedicoDAO {
 
         dataBase.delete("Medico", "id = ?", new String[] { String.valueOf(id) });
     }
+    public void deletarTabela(){
+        dataBase.execSQL("DELETE FROM Medico;");
+    }
 }

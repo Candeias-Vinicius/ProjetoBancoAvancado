@@ -41,6 +41,7 @@ public class ExameDAO {
         values.put("medico_id", exame.getMedico().getId());
         values.put("paciente_id", exame.getPaciente().getId());
         values.put("tipo_exame", exame.getTipo_exame().getNome());
+        values.put("resultado", exame.getResultado());
         values.put("data", exame.getData().toString());
 
         dataBase.insert("Exame",null,values);
@@ -164,5 +165,8 @@ public class ExameDAO {
 
     public void deletar(Integer id){
         dataBase.delete("Exame", "id = ?", new String[] { String.valueOf(id) });
+    }
+    public void deletarTabela(){
+        dataBase.execSQL("DELETE FROM Exame;");
     }
 }

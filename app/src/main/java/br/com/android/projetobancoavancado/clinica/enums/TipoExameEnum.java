@@ -2,7 +2,7 @@ package br.com.android.projetobancoavancado.clinica.enums;
 
 public enum TipoExameEnum {
     ADMISSIONAL("admissional"), PERIODICO("periodico"), RETORNO_AO_TRABALHO("retorno_ao_trabalho"),
-    DEMISSIONAL("demissional"), TRANSFERENCIA_DE_FUNCAO("transferencia_de_Função");
+    DEMISSIONAL("demissional"), TRANSFERENCIA_DE_FUNCAO("transferencia_de_funcao");
 
     String nome;
     TipoExameEnum(String nome) {

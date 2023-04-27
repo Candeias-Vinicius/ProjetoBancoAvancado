@@ -115,4 +115,7 @@ public class PacienteDAO {
 
         dataBase.delete("Paciente", "id = ?", new String[] { String.valueOf(id) });
     }
+    public void deletarTabela(){
+        dataBase.execSQL("DELETE FROM Paciente;");
+    }
 }

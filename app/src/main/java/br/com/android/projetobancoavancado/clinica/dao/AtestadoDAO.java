@@ -19,6 +19,7 @@ import br.com.android.projetobancoavancado.clinica.enums.TipoExameEnum;
 import br.com.android.projetobancoavancado.clinica.model.Atestado;
 import br.com.android.projetobancoavancado.clinica.model.Cargo;
 import br.com.android.projetobancoavancado.clinica.model.Empresa;
+import br.com.android.projetobancoavancado.clinica.model.EmpresaRiscoOcupacional;
 import br.com.android.projetobancoavancado.clinica.model.Exame;
 import br.com.android.projetobancoavancado.clinica.model.Medico;
 import br.com.android.projetobancoavancado.clinica.model.Paciente;
@@ -185,7 +186,30 @@ public class AtestadoDAO {
         }
         return atestado;
     }
+    public List<EmpresaRiscoOcupacional> contarRiscosOcupacionaisPorEmpresa() {
+        List<EmpresaRiscoOcupacional> lista = new ArrayList<>();
+        Cursor cursor = dataBase.rawQuery("SELECT atestado.risco_ocupacional, COUNT(*) as total \n" +
+                "FROM empresa \n" +
+                "INNER JOIN paciente ON empresa.id = paciente.empresa_id \n" +
+                "INNER JOIN exame ON paciente.id = exame.paciente_id \n" +
+                "INNER JOIN atestado ON exame.id = atestado.exame_id \n" +
+                "GROUP BY atestado.risco_ocupacional \n" +
+                "ORDER BY total DESC;", null);
+        while (cursor.moveToNext()) {
+            String riscoOcupacionalStr = cursor.getString(0);
+            int total = cursor.getInt(1);
+
+            RiscoOcupacionalEnum riscoOcupacional = RiscoOcupacionalEnum.valueOf(riscoOcupacionalStr.toUpperCase());
+
+            lista.add(new EmpresaRiscoOcupacional(riscoOcupacional, total));
+        }
+        cursor.close();
+        return lista;
+    }
     public void deletar(Integer id){
         dataBase.delete("Atestado", "id = ?", new String[] { String.valueOf(id) });
+    }
+    public void deletarTabela(){
+        dataBase.execSQL("DELETE FROM Atestado;");
     }
 }

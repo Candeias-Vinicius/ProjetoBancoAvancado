@@ -7,29 +7,16 @@
     tools:context=".clinica.activity.MainActivity">
 
     <Button
-        android:id="@+id/botaoCadastro"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:onClick="mostrarTiposDeCadastro"
-        android:text="Cadastro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
-
-    <Button
         android:id="@+id/botaoListar"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:onClick="mostrarTiposDeLista"
         android:text="Listar"
-        app:layout_constraintBottom_toTopOf="@+id/botaoCadastro"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/botaoPopular"
@@ -39,10 +26,10 @@
         android:text="Popular Banco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botaoCadastro"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintTop_toBottomOf="@+id/botaoListar"
+        app:layout_constraintVertical_bias="0.11" />
 
     <TextView
         android:id="@+id/textViewLogo"
@@ -55,5 +42,19 @@
         app:layout_constraintBottom_toTopOf="@+id/botaoListar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.623" />
+
+    <Button
+        android:id="@+id/botaoDeletar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="deletarBanco"
+        android:text="Deletar banco"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 </androidx.constraintlayout.widget.ConstraintLayout>

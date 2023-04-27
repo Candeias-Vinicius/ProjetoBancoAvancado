@@ -38,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
     private Button listar;
     private Button popularBanco;
 
+    private Button deletarBanco;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        cadastrar = findViewById(R.id.botaoCadastro);
+        deletarBanco = findViewById(R.id.botaoDeletar);
         listar = findViewById(R.id.botaoListar);
         popularBanco = findViewById(R.id.botaoPopular);
 
@@ -59,7 +61,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ListarActivity.class);
         startActivity(intent);
     }
-
+    public void deletarBanco(View view){
+        atestadoDAO.deletarTabela();
+        cargoDAO.deletarTabela();
+        empresaDAO.deletarTabela();
+        exameDAO.deletarTabela();
+        medicoDAO.deletarTabela();
+        pacienteDAO.deletarTabela();
+    }
     public void popularBanco(View view){
             empresaDAO = new EmpresaDAO(MainActivity.this);
             cargoDAO = new CargoDAO(MainActivity.this);

@@ -1,25 +1,29 @@
 package br.com.android.projetobancoavancado.clinica.dbEnrichment.generator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import br.com.android.projetobancoavancado.clinica.enums.RiscoOcupacionalEnum;
 import br.com.android.projetobancoavancado.clinica.enums.TipoExameEnum;
 
 public class TipoExameGenerator {
     public static TipoExameEnum generate() {
         Random random = new Random();
 
-        Map<Integer, TipoExameEnum> mapaTipoExames = new HashMap<Integer, TipoExameEnum>();
-        mapaTipoExames.put(1, TipoExameEnum.ADMISSIONAL);
-        mapaTipoExames.put(2, TipoExameEnum.DEMISSIONAL);
-        mapaTipoExames.put(3, TipoExameEnum.PERIODICO);
-        mapaTipoExames.put(4, TipoExameEnum.RETORNO_AO_TRABALHO);
-        mapaTipoExames.put(5, TipoExameEnum.TRANSFERENCIA_DE_FUNCAO);
+        List<TipoExameEnum> tiposExames = new ArrayList<>();
 
-        int randomKey = random.nextInt(4) + 1;
+        tiposExames.add(TipoExameEnum.PERIODICO);
+        tiposExames.add(TipoExameEnum.ADMISSIONAL);
+        tiposExames.add(TipoExameEnum.DEMISSIONAL);
+        tiposExames.add(TipoExameEnum.RETORNO_AO_TRABALHO);
+        tiposExames.add(TipoExameEnum.TRANSFERENCIA_DE_FUNCAO);
 
-        return mapaTipoExames.get(randomKey);
+        int randomKey = random.nextInt(5) ;
+
+        return tiposExames.get(randomKey);
 
     }
 }

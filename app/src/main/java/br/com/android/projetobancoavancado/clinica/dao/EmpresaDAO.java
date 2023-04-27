@@ -83,4 +83,7 @@ public class EmpresaDAO {
 
         dataBase.delete("Empresa", "id = ?", new String[] { String.valueOf(id) });
     }
+    public void deletarTabela(){
+        dataBase.execSQL("DELETE FROM Empresa;");
+    }
 }

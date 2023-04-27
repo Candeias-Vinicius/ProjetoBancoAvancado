@@ -73,4 +73,7 @@ public class CargoDAO {
 
         dataBase.delete("Cargo", "id = ?", new String[] { String.valueOf(id) });
     }
+    public void deletarTabela(){
+        dataBase.execSQL("DELETE FROM Cargo;");
+    }
 }
